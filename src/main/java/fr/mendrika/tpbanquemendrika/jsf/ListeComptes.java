@@ -6,6 +6,7 @@ package fr.mendrika.tpbanquemendrika.jsf;
 
 import fr.mendrika.tpbanquemendrika.entity.CompteBancaire;
 import fr.mendrika.tpbanquemendrika.service.GestionnaireCompte;
+import fr.mendrika.tpbanquemendrika.util.Util;
 import jakarta.inject.Named;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -36,5 +37,11 @@ public class ListeComptes implements Serializable {
             compteBancaireList = gestionnaireCompte.getAllComptes();
         }
         return compteBancaireList;
+    }
+    
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        gestionnaireCompte.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Compte de " + compteBancaire.getNom() + " supprimé");
+        return "listeComptes?faces-redirect=true";
     }
 }

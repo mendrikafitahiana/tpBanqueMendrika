@@ -23,9 +23,11 @@ public class Init {
     private GestionnaireCompte gestionnaireCompte;
 
     public void init(@Observes @Initialized(ApplicationScoped.class) ServletContext context) {
-        gestionnaireCompte.creerCompte(new CompteBancaire("John Lennon", 150000));
-        gestionnaireCompte.creerCompte(new CompteBancaire("Paul McCartney", 950000));
-        gestionnaireCompte.creerCompte(new CompteBancaire("Ringo Starr", 20000));
-        gestionnaireCompte.creerCompte(new CompteBancaire("Georges Harrisson", 100000));
+        if (gestionnaireCompte.nbComptes() == 0) {
+            gestionnaireCompte.creerCompte(new CompteBancaire("John Lennon", 150000));
+            gestionnaireCompte.creerCompte(new CompteBancaire("Paul McCartney", 950000));
+            gestionnaireCompte.creerCompte(new CompteBancaire("Ringo Starr", 20000));
+            gestionnaireCompte.creerCompte(new CompteBancaire("Georges Harrisson", 100000));
+        }
     }
 }
