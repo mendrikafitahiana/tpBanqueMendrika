@@ -50,21 +50,7 @@ public class AjoutCompte {
     public AjoutCompte() {
     }
     
-    public String ajouterCompte() {
-        boolean erreur = false;
-        if(nom == null) {
-            Util.messageErreur("Le nom est obligatoire !","Le nom est obligatoire !","form:nom");
-            erreur = true;
-        }
-        if(solde <= 0) {
-            Util.messageErreur("Veuillez insérez un solde positif !", "Veuillez insérez un solde positif !", "form:solde");
-            erreur = true;
-        }
-        
-        if(erreur) {
-            return null;
-        }
-        
+    public String action() {
         CompteBancaire compte = new CompteBancaire(nom, solde);
         gestionnaireCompte.creerCompte(compte);
         Util.addFlashInfoMessage("Création de compte réussi!");

@@ -18,15 +18,15 @@
                         Nom du compte : 
                         <h:inputText id="nom" size="3" value="#{ajoutCompte.nom}"
                                      required="true"
-                                     converterMessage="Le nom est une chaine de caracteres"/>
+                                     requiredMessage="Le nom est une chaine de caracteres"/>
                         <h:message for="nom"/>
                         Solde du compte : 
-                        <h:inputText id="solde" size="3" value="#{ajoutCompte.solde}"
+                        <h:inputText id="soldeCompte" size="3" value="#{ajoutCompte.solde}"
                                      required="true"
-                                     converterMessage="Le solde est un nombre entier"/>
-                        <h:message for="solde"/>
+                                     requiredMessage="Le solde est un nombre entier"/>
+                        <h:message for="soldeCompte"/>
                     </h:panelGrid>
-                    <h:commandButton value="Ajouter" action="#{ajoutCompte.ajouterCompte()}"/>
+                    <h:commandButton value="Ajouter" action="#{ajoutCompte.action()}"/>
                 </h:form>
             </ui:define>
 
