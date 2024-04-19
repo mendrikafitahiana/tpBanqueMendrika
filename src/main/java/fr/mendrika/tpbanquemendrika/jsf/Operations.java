@@ -5,27 +5,27 @@
 package fr.mendrika.tpbanquemendrika.jsf;
 
 import fr.mendrika.tpbanquemendrika.entity.CompteBancaire;
+import fr.mendrika.tpbanquemendrika.entity.OperationBancaire;
 import fr.mendrika.tpbanquemendrika.service.GestionnaireCompte;
-import fr.mendrika.tpbanquemendrika.util.Util;
 import jakarta.inject.Named;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author Mendrika Fitahiana
  */
-@Named(value = "modification")
+@Named(value = "operations")
 @ViewScoped
-public class Modification implements Serializable {
+public class Operations implements Serializable {
 
     private Long id;
-    private String nom;
     private CompteBancaire compte;
 
     @Inject
-    private GestionnaireCompte gestionnaireCompte;
+    GestionnaireCompte gestionnaireCompte;
 
     public Long getId() {
         return id;
@@ -35,26 +35,14 @@ public class Modification implements Serializable {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public CompteBancaire getCompte() {
         return compte;
     }
 
-    public void setCompte(CompteBancaire compte) {
-        this.compte = compte;
-    }
-
     /**
-     * Creates a new instance of AjoutCompte
+     * Creates a new instance of Mouvement
      */
-    public Modification() {
+    public Operations() {
     }
 
     public void loadCompte() {
@@ -62,12 +50,8 @@ public class Modification implements Serializable {
             this.compte = gestionnaireCompte.findById(id);
         }
     }
-
-    public String modifierNomCompte() {
-        String message = "Nom ("+compte.getNom()+") changé en ("+nom+")";
-        compte.setNom(nom);
-        gestionnaireCompte.updateCompte(compte);
-        Util.addFlashInfoMessage(message);
-        return "listeComptes?faces-redirect=true";
+    
+    public List<OperationBancaire> getOperations() {
+        return compte.getOperations();
     }
 }

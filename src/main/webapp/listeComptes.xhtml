@@ -39,7 +39,7 @@
                                 <f:convertNumber pattern="###,###,##0"/>
                             </h:outputText>
                         </p:column>
-                        <p:column width="10">
+                        <p:column width="60">
                             <f:facet name="header">
                                 <h:outputText value="Opérations"/>
                             </f:facet>
@@ -49,6 +49,14 @@
                             </h:commandLink>
                             <h:link outcome="/modification?id=#{item.id}" 
                                     value="Modifier nom possesseur" />
+                        </p:column>
+                        <p:column width="60">
+                            <f:facet name="header">
+                                <h:outputText value="Historique opérations"/>
+                            </f:facet>
+                            <h:link value="Détails" outcome="operations">
+                                <f:param name="id" value="#{item.id}" />
+                            </h:link>
                         </p:column>
                     </p:dataTable>
                 </h:form>
