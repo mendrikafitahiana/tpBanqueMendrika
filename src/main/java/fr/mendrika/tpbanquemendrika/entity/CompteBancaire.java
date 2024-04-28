@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.NamedQueries;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -38,6 +39,9 @@ public class CompteBancaire implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OperationBancaire> operations = new ArrayList<>();
+
+    @Version
+    private int version;
 
     public String getNom() {
         return nom;
