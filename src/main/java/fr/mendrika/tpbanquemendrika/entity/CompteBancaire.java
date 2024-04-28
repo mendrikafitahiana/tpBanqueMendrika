@@ -14,12 +14,17 @@ import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.NamedQueries;
 
 /**
  *
  * @author Mendrika Fitahiana
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c JOIN FETCH c.operations")
+})
 public class CompteBancaire implements Serializable {
 
     private static final long serialVersionUID = 1L;

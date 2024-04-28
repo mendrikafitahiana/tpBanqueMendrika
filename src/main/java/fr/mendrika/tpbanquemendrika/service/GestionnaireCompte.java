@@ -12,6 +12,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import java.util.List;
+import jakarta.persistence.TypedQuery;
 
 /**
  *
@@ -43,8 +44,7 @@ public class GestionnaireCompte {
     }
 
     public List<CompteBancaire> getAllComptes() {
-        String requete = "SELECT c FROM CompteBancaire c";
-        Query query = em.createQuery(requete);
+        TypedQuery<CompteBancaire> query = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
         return query.getResultList();
     }
     
